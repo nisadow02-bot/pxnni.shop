@@ -8,19 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Google Font: Kanit / Prompt -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Prompt', sans-serif; background-color: #fff5f7; color: #4a4a4a; overflow-x: hidden; }
-        .pastel-pink { background-color: #ffb7b2; }
-        .pastel-purple { background-color: #d8b4f8; }
-        .pastel-yellow { background-color: #ffe5ad; }
-        .pastel-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 2px solid #ffccd5; }
+        body { font-family: 'Prompt', sans-serif; background-color: #fcf4f8; color: #4a4a4a; overflow-x: hidden; }
+        .pastel-pink { background-color: #f7cbd7; }
+        .pastel-purple { background-color: #e2d1f9; }
+        .pastel-pink-dark { background-color: #e59bb3; }
+        .pastel-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 2px solid #f3d1df; }
         
         /* Falling Rose Petals Animation */
         .petal {
             position: fixed;
-            background: #ff5c8a;
+            background: #e88cad;
             opacity: 0.7;
             border-radius: 150% 0 150% 0;
             animation: fall linear infinite;
@@ -45,31 +45,31 @@
         <!-- Navbar -->
         <nav class="pastel-pink shadow-md sticky top-0 z-50 px-4 py-3">
             <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-                <h1 id="navStoreName" class="text-2xl font-bold text-white drop-shadow-sm flex items-center gap-2">
-                    🌸 pxnni.shop
+                <h1 id="navStoreName" class="text-2xl font-bold text-pink-900 drop-shadow-sm">
+                    pxnni.shop
                 </h1>
                 <div class="flex flex-wrap gap-2 items-center">
-                    <button onclick="switchTab('shop')" class="tab-btn bg-white/80 hover:bg-white text-pink-700 px-3.5 py-1.5 rounded-full font-medium text-sm transition shadow-sm">🛍️ หน้าร้านค้า</button>
-                    <button onclick="switchTab('topup')" class="tab-btn bg-white/50 hover:bg-white text-pink-700 px-3.5 py-1.5 rounded-full font-medium text-sm transition">💳 เติมเครดิต</button>
-                    <button onclick="switchTab('orders')" class="tab-btn bg-white/50 hover:bg-white text-pink-700 px-3.5 py-1.5 rounded-full font-medium text-sm transition">📦 ประวัติสั่งซื้อ</button>
-                    <button onclick="switchTab('rules')" class="tab-btn bg-white/50 hover:bg-white text-pink-700 px-3.5 py-1.5 rounded-full font-medium text-sm transition">📜 กฎร้านค้า</button>
-                    <button onclick="switchTab('admin')" class="tab-btn bg-white/50 hover:bg-white text-pink-700 px-3.5 py-1.5 rounded-full font-medium text-sm transition">⚙️ แอดมิน</button>
+                    <button onclick="switchTab('shop')" class="tab-btn bg-white/90 hover:bg-white text-pink-800 px-3.5 py-1.5 rounded-full font-medium text-sm transition shadow-sm">หน้าร้านค้า</button>
+                    <button onclick="switchTab('topup')" class="tab-btn bg-white/60 hover:bg-white text-pink-800 px-3.5 py-1.5 rounded-full font-medium text-sm transition">เติมเครดิต</button>
+                    <button onclick="switchTab('orders')" class="tab-btn bg-white/60 hover:bg-white text-pink-800 px-3.5 py-1.5 rounded-full font-medium text-sm transition">ประวัติสั่งซื้อ</button>
+                    <button onclick="switchTab('rules')" class="tab-btn bg-white/60 hover:bg-white text-pink-800 px-3.5 py-1.5 rounded-full font-medium text-sm transition">กฎร้านค้า</button>
+                    <button onclick="switchTab('admin')" class="tab-btn bg-white/60 hover:bg-white text-pink-800 px-3.5 py-1.5 rounded-full font-medium text-sm transition">แอดมิน</button>
                 </div>
             </div>
         </nav>
 
         <!-- User Info Bar -->
-        <div id="userBar" class="bg-white/80 border-b border-pink-100 px-4 py-2 text-sm shadow-xs z-40 sticky top-[60px]">
+        <div id="userBar" class="bg-white/90 border-b border-pink-100 px-4 py-2 text-sm shadow-xs z-40 sticky top-[60px]">
             <div class="max-w-6xl mx-auto flex justify-between items-center">
                 <div id="userInfoDisplay" class="flex items-center gap-3">
                     <span class="text-gray-500">สถานะ: ยังไม่ได้เข้าสู่ระบบ</span>
                     <button onclick="openLoginModal()" class="bg-pink-400 hover:bg-pink-500 text-white px-3 py-1 rounded-lg text-xs font-medium shadow-xs">เข้าสู่ระบบ / เปลี่ยนชื่อ</button>
                 </div>
                 <div class="flex items-center gap-4">
-                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold border border-yellow-300">
-                        💰 เครดิต: <span id="userCredit">0.00</span> ฿
+                    <span class="bg-purple-100 text-purple-900 px-3 py-1 rounded-full font-semibold border border-purple-200">
+                        เครดิต: <span id="userCredit">0.00</span> บาท
                     </span>
-                    <button onclick="toggleMusic()" id="musicToggleBtn" class="bg-purple-200 hover:bg-purple-300 text-purple-800 px-3 py-1 rounded-full text-xs font-medium transition">🎵 เปิด/ปิดเพลง</button>
+                    <button onclick="toggleMusic()" id="musicToggleBtn" class="bg-purple-200 hover:bg-purple-300 text-purple-900 px-3 py-1 rounded-full text-xs font-medium transition">เปิด/ปิดเพลง</button>
                 </div>
             </div>
         </div>
@@ -79,15 +79,15 @@
 
             <!-- TAB 1: SHOP -->
             <section id="tab-shop" class="space-y-6">
-                <div class="pastel-purple/30 border border-purple-200 rounded-2xl p-6 text-center shadow-sm">
+                <div class="pastel-purple/50 border border-purple-200 rounded-2xl p-6 text-center shadow-sm">
                     <h2 id="headerTitleText" class="text-3xl font-bold text-purple-900 mb-2">ยินดีต้อนรับสู่ pxnni.shop</h2>
                     <p class="text-gray-600">แหล่งรวมสินค้าดิจิทัลและรหัสลับราคาประหยัด ปลอดภัย ส่งไวอัตโนมัติ 24 ชม.</p>
                 </div>
 
                 <div class="flex justify-between items-center">
-                    <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🛍️ รายการสินค้าทั้งหมด</h3>
-                    <button onclick="syncData()" class="bg-white border border-pink-300 hover:bg-pink-50 text-pink-600 px-4 py-2 rounded-xl text-sm font-medium shadow-xs flex items-center gap-1.5 transition">
-                        🔄 เรียกดูข้อมูลจาก Google Sheet
+                    <h3 class="text-xl font-bold text-gray-800">รายการสินค้าทั้งหมด</h3>
+                    <button onclick="syncData()" class="bg-white border border-pink-300 hover:bg-pink-50 text-pink-700 px-4 py-2 rounded-xl text-sm font-medium shadow-xs transition">
+                        เรียกดูข้อมูลจาก Google Sheet
                     </button>
                 </div>
 
@@ -100,11 +100,11 @@
             <!-- TAB 2: TOPUP -->
             <section id="tab-topup" class="hidden space-y-6 max-w-2xl mx-auto">
                 <div class="pastel-card p-6 rounded-2xl shadow-md space-y-6">
-                    <h2 class="text-2xl font-bold text-pink-800 flex items-center gap-2">💳 เติมเครดิตเข้าระบบ</h2>
+                    <h2 class="text-2xl font-bold text-pink-900">เติมเครดิตเข้าระบบ</h2>
                     
                     <!-- Bank / Wallet Info Box -->
-                    <div class="bg-pink-50 border border-pink-200 rounded-xl p-4 space-y-3">
-                        <h3 class="font-bold text-pink-900 text-base">📌 ช่องทางการชำระเงิน</h3>
+                    <div class="bg-pink-50/70 border border-pink-200 rounded-xl p-4 space-y-3">
+                        <h3 class="font-bold text-pink-900 text-base">ช่องทางการชำระเงิน</h3>
                         <div id="qrImageContainer" class="flex justify-center mb-3">
                             <img id="displayQrImg" src="" alt="QR บัญชีร้าน" class="max-h-48 rounded-lg shadow-sm border border-pink-200 object-contain hidden">
                         </div>
@@ -118,9 +118,9 @@
                             <div class="bg-white p-3 rounded-lg border border-pink-100 flex justify-between items-center">
                                 <div>
                                     <p class="text-xs text-gray-500">เลขบัญชี / เบอร์</p>
-                                    <p id="displayAccNumber" class="font-mono font-bold text-pink-600 text-base">-</p>
+                                    <p id="displayAccNumber" class="font-mono font-bold text-pink-700 text-base">-</p>
                                 </div>
-                                <button onclick="copyText('displayAccNumber')" class="text-xs bg-pink-100 hover:bg-pink-200 text-pink-700 px-2 py-1 rounded">คัดลอก</button>
+                                <button onclick="copyText('displayAccNumber')" class="text-xs bg-pink-100 hover:bg-pink-200 text-pink-800 px-2.5 py-1 rounded">คัดลอก</button>
                             </div>
                         </div>
                         <div class="bg-white p-3 rounded-lg border border-pink-100 flex justify-between items-center text-sm">
@@ -129,8 +129,8 @@
                                 <p id="displayAccName" class="font-semibold text-gray-800">-</p>
                             </div>
                         </div>
-                        <div class="text-xs text-purple-700 bg-purple-50 p-2.5 rounded-lg border border-purple-100">
-                            💡 <span id="displayNoteSlip">-</span>
+                        <div class="text-xs text-purple-900 bg-purple-50 p-3 rounded-lg border border-purple-100">
+                            <span id="displayNoteSlip">-</span>
                         </div>
                     </div>
 
@@ -141,16 +141,16 @@
                             <input type="number" id="topupAmount" min="1" step="any" required class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:ring-2 focus:ring-pink-300 outline-none" placeholder="เช่น 100">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">📷 อัปโหลดรูปสลิปจากมือถือ / ไฟล์</label>
-                            <input type="file" id="topupSlipFile" accept="image/*" onchange="previewSlipFile(event)" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-pink-100 file:text-pink-700 hover:file:bg-pink-200 cursor-pointer">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">อัปโหลดรูปสลิปจากมือถือ / ไฟล์</label>
+                            <input type="file" id="topupSlipFile" accept="image/*" onchange="previewSlipFile(event)" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-pink-100 file:text-pink-800 hover:file:bg-pink-200 cursor-pointer">
                             <input type="hidden" id="topupSlipUrl">
                             <div id="slipPreviewContainer" class="mt-3 hidden text-center">
                                 <p class="text-xs text-gray-500 mb-1">ตัวอย่างสลิปที่เลือก:</p>
                                 <img id="slipPreviewImg" class="max-h-40 mx-auto rounded-lg border border-pink-200 shadow-xs">
                             </div>
                         </div>
-                        <button type="submit" class="w-full pastel-pink hover:bg-pink-400 text-white font-bold py-3 rounded-xl shadow-md transition text-base">
-                            💾 บันทึกข้อมูลและเติมเครดิตทันที
+                        <button type="submit" class="w-full pastel-pink-dark hover:bg-pink-400 text-white font-bold py-3 rounded-xl shadow-md transition text-base">
+                            บันทึกข้อมูลและเติมเครดิตทันที
                         </button>
                     </form>
                 </div>
@@ -159,7 +159,7 @@
             <!-- TAB 3: ORDERS -->
             <section id="tab-orders" class="hidden space-y-6 max-w-4xl mx-auto">
                 <div class="pastel-card p-6 rounded-2xl shadow-md space-y-4">
-                    <h2 class="text-2xl font-bold text-pink-800 flex items-center gap-2">📦 ประวัติคำสั่งซื้อ & รหัสสินค้าของคุณ</h2>
+                    <h2 class="text-2xl font-bold text-pink-900">ประวัติคำสั่งซื้อ & รหัสสินค้าของคุณ</h2>
                     <p class="text-sm text-gray-600">รหัสสินค้าที่คุณสั่งซื้อจะแสดงที่นี่ สามารถกดปุ่มคัดลอกเพื่อนำไปใช้งานได้ทันที</p>
                     
                     <div class="overflow-x-auto">
@@ -184,7 +184,7 @@
             <!-- TAB 4: RULES -->
             <section id="tab-rules" class="hidden space-y-6 max-w-3xl mx-auto">
                 <div class="pastel-card p-6 rounded-2xl shadow-md space-y-6">
-                    <h2 class="text-2xl font-bold text-pink-800 flex items-center gap-2">📜 กฎระเบียบและข้อตกลงของร้าน</h2>
+                    <h2 class="text-2xl font-bold text-pink-900">กฎระเบียบและข้อตกลงของร้าน</h2>
                     
                     <!-- Rules Banner Image -->
                     <div id="rulesBannerContainer" class="hidden text-center">
@@ -194,12 +194,12 @@
                     <!-- Rules Sub-tabs -->
                     <div class="flex flex-wrap gap-2 border-b border-pink-200 pb-3">
                         <button onclick="switchRuleTab('rule1')" id="rBtn1" class="rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-pink-400 text-white shadow-sm transition">กฎการสั่งซื้อ</button>
-                        <button onclick="switchRuleTab('rule2')" id="rBtn2" class="rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-pink-700 hover:bg-pink-50 transition">การรับประกันสินค้า</button>
-                        <button onclick="switchRuleTab('rule3')" id="rBtn3" class="rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-pink-700 hover:bg-pink-50 transition">ข้อตกลงการเติมเงิน</button>
+                        <button onclick="switchRuleTab('rule2')" id="rBtn2" class="rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-pink-800 hover:bg-pink-50 transition">การรับประกันสินค้า</button>
+                        <button onclick="switchRuleTab('rule3')" id="rBtn3" class="rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-pink-800 hover:bg-pink-50 transition">ข้อตกลงการเติมเงิน</button>
                     </div>
 
                     <!-- Rule Content Display -->
-                    <div class="bg-pink-50/60 p-5 rounded-xl border border-pink-100 text-gray-700 leading-relaxed min-h-[150px]" id="ruleContentDisplay">
+                    <div class="bg-pink-50/50 p-5 rounded-xl border border-pink-100 text-gray-700 leading-relaxed min-h-[150px]" id="ruleContentDisplay">
                         <!-- Loaded dynamically -->
                     </div>
                 </div>
@@ -209,7 +209,7 @@
             <section id="tab-admin" class="hidden space-y-6 max-w-4xl mx-auto">
                 <!-- Admin Login Check -->
                 <div id="adminLoginBox" class="pastel-card p-8 rounded-2xl shadow-md text-center max-w-md mx-auto space-y-4">
-                    <h2 class="text-2xl font-bold text-purple-900">🔐 เข้าสู่ระบบผู้ดูแลระบบ</h2>
+                    <h2 class="text-2xl font-bold text-purple-900">เข้าสู่ระบบผู้ดูแลระบบ</h2>
                     <p class="text-sm text-gray-600">กรุณากรอกรหัสผ่านแอดมินเพื่อจัดการระบบร้านค้า</p>
                     <input type="password" id="adminPasswordInput" placeholder="รหัสผ่านแอดมิน" class="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-center outline-none focus:ring-2 focus:ring-purple-300">
                     <button onclick="verifyAdmin()" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2.5 rounded-xl shadow-md transition">เข้าสู่ระบบแอดมิน</button>
@@ -218,27 +218,27 @@
                 <!-- Admin Dashboard (Hidden until login) -->
                 <div id="adminDashboard" class="hidden space-y-6">
                     <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-purple-100">
-                        <h2 class="text-xl font-bold text-purple-900">🛠️ แผงควบคุมผู้ดูแลระบบ (Admin Panel)</h2>
+                        <h2 class="text-xl font-bold text-purple-900">แผงควบคุมผู้ดูแลระบบ</h2>
                         <div class="flex gap-2">
-                            <button onclick="saveDataToSheet()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-xs transition flex items-center gap-1.5">
-                                ☁️ บันทึกข้อมูลลง Google Sheet
+                            <button onclick="saveDataToSheet()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-xs transition">
+                                บันทึกข้อมูลลง Google Sheet
                             </button>
                             <button onclick="logoutAdmin()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-2 rounded-xl text-sm font-medium">ออกจากระบบ</button>
                         </div>
                     </div>
 
                     <!-- Admin Sub-navigation Tabs -->
-                    <div class="flex flex-wrap gap-2 bg-white/60 p-2 rounded-2xl border border-purple-100">
-                        <button onclick="switchAdminSubTab('inventory')" id="aSubBtn1" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-purple-500 text-white transition">📦 จัดการสต๊อกสินค้า</button>
-                        <button onclick="switchAdminSubTab('settings')" id="aSubBtn2" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-700 hover:bg-purple-50 transition">⚙️ ตั้งค่าร้าน & บัญชี</button>
-                        <button onclick="switchAdminSubTab('topups')" id="aSubBtn3" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-700 hover:bg-purple-50 transition">💳 ตรวจสอบสลิปเติมเงิน</button>
-                        <button onclick="switchAdminSubTab('sales')" id="aSubBtn4" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-700 hover:bg-purple-50 transition">📊 ประวัติการขาย & รหัสที่ขายแล้ว</button>
+                    <div class="flex flex-wrap gap-2 bg-white/80 p-2 rounded-2xl border border-purple-100">
+                        <button onclick="switchAdminSubTab('inventory')" id="aSubBtn1" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-purple-500 text-white transition">จัดการสต๊อกสินค้า</button>
+                        <button onclick="switchAdminSubTab('settings')" id="aSubBtn2" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-800 hover:bg-purple-50 transition">ตั้งค่าร้าน & บัญชี</button>
+                        <button onclick="switchAdminSubTab('topups')" id="aSubBtn3" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-800 hover:bg-purple-50 transition">ตรวจสอบสลิปเติมเงิน</button>
+                        <button onclick="switchAdminSubTab('sales')" id="aSubBtn4" class="admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-800 hover:bg-purple-50 transition">ประวัติการขาย & รหัสที่ขายแล้ว</button>
                     </div>
 
                     <!-- SubTab 1: Inventory Management -->
                     <div id="admin-sub-inventory" class="space-y-6">
                         <div class="pastel-card p-6 rounded-2xl shadow-md space-y-4">
-                            <h3 class="text-lg font-bold text-purple-900" id="productFormTitle">➕ เพิ่มสินค้าใหม่</h3>
+                            <h3 class="text-lg font-bold text-purple-900" id="productFormTitle">เพิ่มสินค้าใหม่</h3>
                             <form onsubmit="handleProductSubmit(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <input type="hidden" id="editProductId">
                                 <div>
@@ -270,7 +270,7 @@
 
                         <!-- Product List Table -->
                         <div class="pastel-card p-6 rounded-2xl shadow-md space-y-4">
-                            <h3 class="text-lg font-bold text-purple-900">📦 รายการสินค้าในสต๊อกทั้งหมด</h3>
+                            <h3 class="text-lg font-bold text-purple-900">รายการสินค้าในสต๊อกทั้งหมด</h3>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
@@ -293,7 +293,7 @@
                     <!-- SubTab 2: Store & Account Settings -->
                     <div id="admin-sub-settings" class="hidden space-y-6">
                         <div class="pastel-card p-6 rounded-2xl shadow-md space-y-4">
-                            <h3 class="text-lg font-bold text-purple-900">⚙️ ตั้งค่าร้านค้า, บัญชีรับเงิน และกฎร้าน</h3>
+                            <h3 class="text-lg font-bold text-purple-900">ตั้งค่าร้านค้า, บัญชีรับเงิน และกฎร้าน</h3>
                             <form onsubmit="saveStoreSettings(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">ชื่อร้าน (Store Name)</label>
@@ -312,7 +312,7 @@
                                     <input type="url" id="setBgMusicUrl" placeholder="https://.../song.mp3" class="w-full px-4 py-2 rounded-xl border border-purple-200 outline-none">
                                 </div>
                                 <div class="md:col-span-2 border-t border-purple-100 pt-3">
-                                    <h4 class="font-bold text-purple-800 mb-3">💳 ข้อมูลบัญชีรับเงิน & ป้ายบัญชี</h4>
+                                    <h4 class="font-bold text-purple-900 mb-3">ข้อมูลบัญชีรับเงิน & ป้ายบัญชี</h4>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">ชื่อบัญชี</label>
@@ -339,7 +339,7 @@
                                     <input type="url" id="setQrImage" class="w-full px-4 py-2 rounded-xl border border-purple-200 outline-none">
                                 </div>
                                 <div class="md:col-span-2 border-t border-purple-100 pt-3">
-                                    <h4 class="font-bold text-purple-800 mb-3">📜 ตั้งค่ากฎร้านค้า & ช่องทางติดต่อ</h4>
+                                    <h4 class="font-bold text-purple-900 mb-3">ตั้งค่ากฎร้านค้า & ช่องทางติดต่อ</h4>
                                 </div>
                                 <div class="md:col-span-2">
                                     <label class="block text-sm font-medium text-gray-700 mb-1">URL รูปภาพป้ายกฎร้านค้า</label>
@@ -362,12 +362,12 @@
                                     <textarea id="setRule3" rows="3" class="w-full px-4 py-2 rounded-xl border border-purple-200 outline-none"></textarea>
                                 </div>
                                 <div class="md:col-span-2">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Google Apps Script Web App URL (สำหรับซิงค์ข้อมูลชีต)</label>
-                                    <input type="url" id="setGsUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-4 py-2 rounded-xl border border-purple-200 font-mono text-sm outline-none">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Google Apps Script Web App URL</label>
+                                    <input type="url" id="setGsUrl" class="w-full px-4 py-2 rounded-xl border border-purple-200 font-mono text-sm outline-none">
                                 </div>
                                 <div class="md:col-span-2">
                                     <button type="submit" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 rounded-xl shadow-md transition">
-                                        💾 บันทึกการตั้งค่าร้านทั้งหมด
+                                        บันทึกการตั้งค่าร้านทั้งหมด
                                     </button>
                                 </div>
                             </form>
@@ -377,7 +377,7 @@
                     <!-- SubTab 3: Topup Slips Review -->
                     <div id="admin-sub-topups" class="hidden space-y-6">
                         <div class="pastel-card p-6 rounded-2xl shadow-md space-y-4">
-                            <h3 class="text-lg font-bold text-purple-900">💳 รายการสลิปเติมเครดิตของลูกค้า</h3>
+                            <h3 class="text-lg font-bold text-purple-900">รายการสลิปเติมเครดิตของลูกค้า</h3>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
@@ -400,7 +400,7 @@
                     <!-- SubTab 4: Sales & Sold Codes History -->
                     <div id="admin-sub-sales" class="hidden space-y-6">
                         <div class="pastel-card p-6 rounded-2xl shadow-md space-y-4">
-                            <h3 class="text-lg font-bold text-purple-900">📊 ประวัติการขาย & รหัสที่ถูกขายออกไปแล้ว</h3>
+                            <h3 class="text-lg font-bold text-purple-900">ประวัติการขาย & รหัสที่ถูกขายออกไปแล้ว</h3>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
@@ -426,21 +426,21 @@
     </div>
 
     <!-- Footer -->
-    <footer class="pastel-pink py-6 text-center text-white text-sm shadow-inner mt-auto">
+    <footer class="pastel-pink py-6 text-center text-pink-900 text-sm shadow-inner mt-auto">
         <div class="max-w-6xl mx-auto space-y-1">
-            <p id="footerStoreName" class="font-bold">🌸 pxnni.shop - All Rights Reserved</p>
+            <p id="footerStoreName" class="font-bold">pxnni.shop - All Rights Reserved</p>
             <p id="footerLineContact">ติดต่อสอบถาม: @pxnni.shop</p>
         </div>
     </footer>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50 hidden">
+    <div id="loginModal" class="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 hidden">
         <div class="pastel-card p-6 rounded-2xl shadow-2xl max-w-sm w-full mx-4 space-y-4">
-            <h3 class="text-xl font-bold text-pink-800 text-center">🔐 เข้าสู่ระบบร้านค้า</h3>
+            <h3 class="text-xl font-bold text-pink-900 text-center">เข้าสู่ระบบร้านค้า</h3>
             <p class="text-xs text-gray-600 text-center">กรุณากรอกชื่อผู้ใช้ของคุณเพื่อใช้งานระบบเครดิตและสั่งซื้อสินค้า</p>
             <input type="text" id="modalUsernameInput" placeholder="ชื่อผู้ใช้งาน (Username)" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 outline-none focus:ring-2 focus:ring-pink-300">
             <div class="flex gap-2">
-                <button onclick="handleLoginSubmit()" class="flex-1 pastel-pink hover:bg-pink-400 text-white font-bold py-2.5 rounded-xl shadow-md transition">ยืนยัน</button>
+                <button onclick="handleLoginSubmit()" class="flex-1 pastel-pink-dark hover:bg-pink-400 text-white font-bold py-2.5 rounded-xl shadow-md transition">ยืนยัน</button>
                 <button onclick="closeLoginModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-xl text-sm">ยกเลิก</button>
             </div>
         </div>
@@ -455,8 +455,8 @@
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15); // A5
+            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15);
             gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
             osc.connect(gain);
@@ -488,7 +488,7 @@
             userCredit: parseFloat(localStorage.getItem('pxnni_credit') || '0'),
             adminLoggedIn: false,
             adminPass: localStorage.getItem('pxnni_admin_pass') || '1234',
-            gsUrl: localStorage.getItem('pxnni_gs_url') || '',
+            gsUrl: localStorage.getItem('pxnni_gs_url') || 'https://script.google.com/macros/s/AKfycbzmHXvNZM7bruIbe-MGOcNogs8G5Bu1GpzrdDbRED2S8FUNc92S3Lk7edZqXeBxAi_1-g/exec',
             storeName: localStorage.getItem('pxnni_storeName') || 'pxnni.shop',
             headerTitle: localStorage.getItem('pxnni_headerTitle') || 'ยินดีต้อนรับสู่ร้าน pxnni.shop',
             bgMusicUrl: localStorage.getItem('pxnni_bgMusicUrl') || '',
@@ -505,8 +505,8 @@
             rule3: localStorage.getItem('pxnni_rule3') || 'การเติมเครดิตกรุณาแนบสลิปที่ถูกต้อง ระบบจะเติมเครดิตเข้าทันที',
             
             products: JSON.parse(localStorage.getItem('pxnni_products') || JSON.stringify([
-                { id: 'p1', name: 'Netflix 1 เดือน (จอส่วนตัว)', price: 150, desc: 'บัญชีพรีเมียม 4K Ultra HD', img: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=500', codes: ['net1@gmail.com:pass1', 'net2@gmail.com:pass2'] },
-                { id: 'p2', name: 'Spotify 1 เดือน (ส่วนตัว)', price: 79, desc: 'ฟังเพลงยาวๆ ไม่มีโฆษณา', img: 'https://images.unsplash.com/photo-1614680376593-902f749f7ffc?w=500', codes: ['spot1@gmail.com:pass1'] }
+                { id: 'p1', name: 'Netflix 1 เดือน', price: 150, desc: 'บัญชีพรีเมียม 4K Ultra HD', img: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=500', codes: ['net1@gmail.com:pass1', 'net2@gmail.com:pass2'] },
+                { id: 'p2', name: 'Spotify 1 เดือน', price: 79, desc: 'ฟังเพลงยาวๆ ไม่มีโฆษณา', img: 'https://images.unsplash.com/photo-1614680376593-902f749f7ffc?w=500', codes: ['spot1@gmail.com:pass1'] }
             ])),
             topups: JSON.parse(localStorage.getItem('pxnni_topups') || '[]'),
             sales: JSON.parse(localStorage.getItem('pxnni_sales') || '[]')
@@ -526,12 +526,11 @@
 
         function applySettingsToUI() {
             document.getElementById('pageTitle').innerText = `${appData.storeName} - ร้านค้าออนไลน์`;
-            document.getElementById('navStoreName').innerText = `🌸 ${appData.storeName}`;
+            document.getElementById('navStoreName').innerText = appData.storeName;
             document.getElementById('headerTitleText').innerText = appData.headerTitle;
-            document.getElementById('footerStoreName').innerText = `🌸 ${appData.storeName} - All Rights Reserved`;
+            document.getElementById('footerStoreName').innerText = `${appData.storeName} - All Rights Reserved`;
             document.getElementById('footerLineContact').innerText = `ติดต่อสอบถาม: ${appData.lineContact}`;
 
-            // Topup info
             document.getElementById('displayBankName').innerText = appData.bankName;
             document.getElementById('displayAccNumber').innerText = appData.accNumber;
             document.getElementById('displayAccName').innerText = appData.accName;
@@ -545,13 +544,11 @@
                 qrImg.classList.add('hidden');
             }
 
-            // Background Music
             const audio = document.getElementById('bgMusic');
             if (appData.bgMusicUrl) {
                 audio.src = appData.bgMusicUrl;
             }
 
-            // Admin Settings Form fields
             document.getElementById('setStoreName').value = appData.storeName;
             document.getElementById('setHeaderTitle').value = appData.headerTitle;
             document.getElementById('setAdminPass').value = appData.adminPass;
@@ -570,7 +567,6 @@
             document.getElementById('setGsUrl').value = appData.gsUrl;
         }
 
-        // --- Navigation Tabs ---
         function switchTab(tabName) {
             playCuteSound();
             ['shop', 'topup', 'orders', 'rules', 'admin'].forEach(t => {
@@ -579,7 +575,6 @@
             document.getElementById(`tab-${tabName}`).classList.remove('hidden');
         }
 
-        // --- User & Login Modal ---
         function openLoginModal() {
             document.getElementById('loginModal').classList.remove('hidden');
             document.getElementById('modalUsernameInput').value = appData.currentUser || '';
@@ -604,7 +599,7 @@
             const display = document.getElementById('userInfoDisplay');
             if (appData.currentUser) {
                 display.innerHTML = `
-                    <span class="font-bold text-pink-700">👤 ผู้ใช้: ${appData.currentUser}</span>
+                    <span class="font-bold text-pink-800">ผู้ใช้: ${appData.currentUser}</span>
                     <button onclick="openLoginModal()" class="text-xs text-gray-500 hover:text-pink-600 underline">เปลี่ยนชื่อ</button>
                 `;
             } else {
@@ -617,7 +612,6 @@
             localStorage.setItem('pxnni_credit', appData.userCredit);
         }
 
-        // --- Music Player Toggle ---
         let isMusicPlaying = false;
         function toggleMusic() {
             playCuteSound();
@@ -629,18 +623,17 @@
             if (isMusicPlaying) {
                 audio.pause();
                 isMusicPlaying = false;
-                document.getElementById('musicToggleBtn').innerText = '🎵 เปิดเพลง';
+                document.getElementById('musicToggleBtn').innerText = 'เปิดเพลง';
             } else {
                 audio.play().then(() => {
                     isMusicPlaying = true;
-                    document.getElementById('musicToggleBtn').innerText = '⏸️ ปิดเพลง';
+                    document.getElementById('musicToggleBtn').innerText = 'ปิดเพลง';
                 }).catch(err => {
                     Swal.fire('แจ้งเตือน', 'ไม่สามารถเล่นเพลงได้ ตรวจสอบ URL หรือรูปแบบไฟล์', 'error');
                 });
             }
         }
 
-        // --- Render Storefront Products ---
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
@@ -659,7 +652,7 @@
                                 <h4 class="font-bold text-lg text-gray-800">${p.name}</h4>
                                 <p class="text-sm text-gray-600 line-clamp-2">${p.desc || '-'}</p>
                                 <div class="flex justify-between items-center pt-2">
-                                    <span class="text-pink-600 font-bold text-xl">${p.price} ฿</span>
+                                    <span class="text-pink-700 font-bold text-xl">${p.price} บาท</span>
                                     <span class="text-xs px-2.5 py-1 rounded-full font-medium ${isOutOfStock ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}">
                                         คงเหลือ: ${stockCount} ชิ้น
                                     </span>
@@ -667,8 +660,8 @@
                             </div>
                         </div>
                         <div class="p-4 pt-0">
-                            <button onclick="buyProduct('${p.id}')" ${isOutOfStock ? 'disabled' : ''} class="w-full py-2.5 rounded-xl font-bold shadow-sm transition ${isOutOfStock ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'pastel-pink hover:bg-pink-400 text-white'}">
-                                ${isOutOfStock ? 'สินค้าหมด' : '🛒 กดซื้อสินค้า'}
+                            <button onclick="buyProduct('${p.id}')" ${isOutOfStock ? 'disabled' : ''} class="w-full py-2.5 rounded-xl font-bold shadow-sm transition ${isOutOfStock ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'pastel-pink-dark hover:bg-pink-400 text-white'}">
+                                ${isOutOfStock ? 'สินค้าหมด' : 'กดซื้อสินค้า'}
                             </button>
                         </div>
                     </div>
@@ -676,7 +669,6 @@
             });
         }
 
-        // --- Purchase Flow ---
         function buyProduct(productId) {
             if (!appData.currentUser) {
                 Swal.fire({
@@ -695,28 +687,25 @@
             }
 
             if (appData.userCredit < product.price) {
-                Swal.fire('เครดิตไม่พอ', `เครดิตของคุณมี ${appData.userCredit} ฿ แต่สินค้าราคา ${product.price} ฿ กรุณาเติมเครดิตก่อนสั่งซื้อ`, 'warning');
+                Swal.fire('เครดิตไม่พอ', `เครดิตของคุณมี ${appData.userCredit} บาท แต่สินค้าราคา ${product.price} บาท กรุณาเติมเครดิตก่อนสั่งซื้อ`, 'warning');
                 return;
             }
 
             Swal.fire({
                 title: `ยืนยันการซื้อ "${product.name}"?`,
-                text: `ระบบจะหักเงิน ${product.price} ฿ และส่งรหัสให้คุณทันที`,
+                text: `ระบบจะหักเงิน ${product.price} บาท และส่งรหัสให้คุณทันที`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: 'ยืนยันซื้อ',
                 cancelButtonText: 'ยกเลิก',
-                confirmButtonColor: '#ffb7b2'
+                confirmButtonColor: '#e59bb3'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Deduct credit
                     appData.userCredit -= product.price;
                     updateUserBar();
 
-                    // Take 1 code from stock
                     const deliveredCode = product.codes.shift();
 
-                    // Record Sale
                     const saleRecord = {
                         id: 'sale_' + Date.now(),
                         username: appData.currentUser,
@@ -728,7 +717,6 @@
                     };
                     appData.sales.unshift(saleRecord);
 
-                    // Save state
                     saveLocalData();
                     renderProducts();
                     renderOrders();
@@ -739,7 +727,7 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'ซื้อสินค้าสำเร็จ!',
-                        html: `รหัสสินค้าของคุณ:<br><b class="text-pink-600 select-all">${deliveredCode}</b><br><small class="text-gray-500">คุณสามารถคัดลอกรหัสนี้ได้ที่หน้า "ประวัติสั่งซื้อ"</small>`,
+                        html: `รหัสสินค้าของคุณ:<br><b class="text-pink-700 select-all">${deliveredCode}</b><br><small class="text-gray-500">คุณสามารถคัดลอกรหัสนี้ได้ที่หน้า "ประวัติสั่งซื้อ"</small>`,
                         confirmButtonText: 'ไปดูประวัติคำสั่งซื้อ'
                     }).then(() => {
                         switchTab('orders');
@@ -748,7 +736,6 @@
             });
         }
 
-        // --- Render Orders ---
         function renderOrders() {
             const tbody = document.getElementById('ordersTableBody');
             tbody.innerHTML = '';
@@ -762,10 +749,10 @@
                     <tr class="hover:bg-pink-50/50 transition">
                         <td class="p-3 text-xs text-gray-500">${o.date}</td>
                         <td class="p-3 font-semibold text-gray-800">${o.productName}</td>
-                        <td class="p-3 text-pink-600">${o.price} ฿</td>
-                        <td class="p-3 font-mono font-bold text-purple-700 select-all">${o.code}</td>
+                        <td class="p-3 text-pink-700">${o.price} บาท</td>
+                        <td class="p-3 font-mono font-bold text-purple-800 select-all">${o.code}</td>
                         <td class="p-3 text-center">
-                            <button onclick="copyStringToClipboard('${o.code}')" class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-3 py-1 rounded-lg text-xs font-medium">📋 คัดลอกรหัส</button>
+                            <button onclick="copyStringToClipboard('${o.code}')" class="bg-pink-100 hover:bg-pink-200 text-pink-800 px-3 py-1 rounded-lg text-xs font-medium">คัดลอกรหัส</button>
                         </td>
                     </tr>
                 `;
@@ -784,7 +771,6 @@
             copyStringToClipboard(text);
         }
 
-        // --- Topup Slip Upload & Auto Credit ---
         function previewSlipFile(event) {
             const file = event.target.files[0];
             if (file) {
@@ -813,7 +799,6 @@
                 return;
             }
 
-            // Auto add credit immediately without admin review requirement
             appData.userCredit += amount;
             updateUserBar();
 
@@ -833,7 +818,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'เติมเครดิตสำเร็จ!',
-                text: `เพิ่มเครดิตจำนวน ${amount} ฿ เข้าสู่บัญชีของคุณเรียบร้อยแล้ว`,
+                text: `เพิ่มเครดิตจำนวน ${amount} บาท เข้าสู่บัญชีของคุณเรียบร้อยแล้ว`,
                 timer: 2000,
                 showConfirmButton: false
             });
@@ -845,7 +830,6 @@
             switchTab('shop');
         }
 
-        // --- Rules Tab Logic ---
         function renderRules() {
             if (appData.rulesBanner) {
                 document.getElementById('rulesBannerImg').src = appData.rulesBanner;
@@ -862,14 +846,13 @@
                 if (k === ruleKey) {
                     btn.className = 'rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-pink-400 text-white shadow-sm transition';
                 } else {
-                    btn.className = 'rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-pink-700 hover:bg-pink-50 transition';
+                    btn.className = 'rule-tab-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-pink-800 hover:bg-pink-50 transition';
                 }
             });
             const content = appData[ruleKey] || 'ไม่มีข้อมูลกฎในหมวดหมู่นี้';
             document.getElementById('ruleContentDisplay').innerHTML = `<p class="whitespace-pre-line">${content}</p>`;
         }
 
-        // --- Admin Authentication & SubTabs ---
         function verifyAdmin() {
             const pass = document.getElementById('adminPasswordInput').value;
             if (pass === appData.adminPass) {
@@ -898,13 +881,12 @@
                     btn.className = 'admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-purple-500 text-white transition';
                     div.classList.remove('hidden');
                 } else {
-                    btn.className = 'admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-700 hover:bg-purple-50 transition';
+                    btn.className = 'admin-sub-btn px-4 py-2 rounded-xl font-semibold text-sm bg-white text-purple-800 hover:bg-purple-50 transition';
                     div.classList.add('hidden');
                 }
             });
         }
 
-        // --- Admin Inventory Management ---
         function handleProductSubmit(event) {
             event.preventDefault();
             const id = document.getElementById('editProductId').value || 'prod_' + Date.now();
@@ -914,7 +896,6 @@
             const img = document.getElementById('prodImg').value;
             const rawCodes = document.getElementById('prodCodes').value;
 
-            // Parse codes by '/' or newline
             let codes = [];
             if (rawCodes) {
                 if (rawCodes.includes('/')) {
@@ -951,11 +932,11 @@
                     <tr class="hover:bg-purple-50/50 transition">
                         <td class="p-3"><img src="${p.img || ''}" class="w-10 h-10 object-cover rounded-lg"></td>
                         <td class="p-3 font-semibold text-gray-800">${p.name}</td>
-                        <td class="p-3 text-purple-700">${p.price} ฿</td>
+                        <td class="p-3 text-purple-800">${p.price} บาท</td>
                         <td class="p-3">${p.codes ? p.codes.length : 0} ชิ้น</td>
                         <td class="p-3 text-center space-x-2">
-                            <button onclick="editProduct('${p.id}')" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded-lg text-xs">แก้ไข</button>
-                            <button onclick="deleteProduct('${p.id}')" class="bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1 rounded-lg text-xs">ลบ</button>
+                            <button onclick="editProduct('${p.id}')" class="bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-lg text-xs">แก้ไข</button>
+                            <button onclick="deleteProduct('${p.id}')" class="bg-red-100 hover:bg-red-200 text-red-800 px-3 py-1 rounded-lg text-xs">ลบ</button>
                         </td>
                     </tr>
                 `;
@@ -971,7 +952,7 @@
             document.getElementById('prodDesc').value = p.desc;
             document.getElementById('prodImg').value = p.img;
             document.getElementById('prodCodes').value = p.codes.join(' / ');
-            document.getElementById('productFormTitle').innerText = '✏️ แก้ไขข้อมูลสินค้า';
+            document.getElementById('productFormTitle').innerText = 'แก้ไขข้อมูลสินค้า';
             document.getElementById('cancelEditBtn').classList.remove('hidden');
             switchAdminSubTab('inventory');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -984,7 +965,7 @@
             document.getElementById('prodDesc').value = '';
             document.getElementById('prodImg').value = '';
             document.getElementById('prodCodes').value = '';
-            document.getElementById('productFormTitle').innerText = '➕ เพิ่มสินค้าใหม่';
+            document.getElementById('productFormTitle').innerText = 'เพิ่มสินค้าใหม่';
             document.getElementById('cancelEditBtn').classList.add('hidden');
         }
 
@@ -1006,7 +987,6 @@
             });
         }
 
-        // --- Admin Settings Save ---
         function saveStoreSettings(event) {
             event.preventDefault();
             appData.storeName = document.getElementById('setStoreName').value;
@@ -1049,7 +1029,6 @@
             Swal.fire({ icon: 'success', title: 'บันทึกการตั้งค่าร้านสำเร็จ', timer: 1500, showConfirmButton: false });
         }
 
-        // --- Admin Topups & Sales render ---
         function renderAdminTopups() {
             const tbody = document.getElementById('adminTopupsTable');
             tbody.innerHTML = '';
@@ -1062,7 +1041,7 @@
                     <tr class="hover:bg-purple-50/50 transition">
                         <td class="p-3 text-xs text-gray-500">${t.date}</td>
                         <td class="p-3 font-semibold">${t.username}</td>
-                        <td class="p-3 text-purple-700 font-bold">+${t.amount} ฿</td>
+                        <td class="p-3 text-purple-800 font-bold">+${t.amount} บาท</td>
                         <td class="p-3"><a href="${t.slipUrl}" target="_blank" class="text-blue-600 underline text-xs">ดูรูปสลิป</a></td>
                         <td class="p-3 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">${t.status}</span></td>
                     </tr>
@@ -1082,15 +1061,14 @@
                     <tr class="hover:bg-purple-50/50 transition">
                         <td class="p-3 text-xs text-gray-500">${s.date}</td>
                         <td class="p-3 font-semibold">${s.username}</td>
-                        <td class="p-3">${s.productName} (${s.price} ฿)</td>
-                        <td class="p-3 font-mono text-purple-800 select-all">${s.code}</td>
+                        <td class="p-3">${s.productName} (${s.price} บาท)</td>
+                        <td class="p-3 font-mono text-purple-900 select-all">${s.code}</td>
                         <td class="p-3 text-center"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs">${s.status}</span></td>
                     </tr>
                 `;
             });
         }
 
-        // --- LocalStorage & Google Sheets Sync ---
         function saveLocalData() {
             localStorage.setItem('pxnni_products', JSON.stringify(appData.products));
             localStorage.setItem('pxnni_topups', JSON.stringify(appData.topups));
@@ -1143,7 +1121,7 @@
 
         function syncData() {
             if (!appData.gsUrl) {
-                Swal.fire('แจ้งเตือน', 'ยังไม่ได้กำหนด Google Apps Script Web App URL สามารถเพิ่มได้ที่หน้าแอดมิน > ตั้งค่า', 'info');
+                Swal.fire('แจ้งเตือน', 'ยังไม่ได้กำหนด Google Apps Script Web App URL', 'info');
                 return;
             }
 
@@ -1152,7 +1130,7 @@
             fetch(appData.gsUrl)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.products) appData.products = data.products;
+                    if (data.products && data.products.length > 0) appData.products = data.products;
                     if (data.topups) appData.topups = data.topups;
                     if (data.sales) appData.sales = data.sales;
                     if (data.settings) {
