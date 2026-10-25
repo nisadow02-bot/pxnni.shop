@@ -11,14 +11,16 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Prompt', sans-serif; background-color: #fff4f7; color: #5a4a50; overflow-x: hidden; }
-        .pastel-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 2px solid #ffedf1; border-radius: 28px; box-shadow: 0 10px 30px rgba(255, 182, 193, 0.15); }
+        body { font-family: 'Prompt', sans-serif; background-color: #fff0f5; color: #4a4a4a; overflow-x: hidden; }
+        .pastel-pink { background-color: #ffb7b2; }
+        .pastel-purple { background-color: #d8b4f8; }
+        .pastel-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 2px solid #ffd1dc; border-radius: 24px; }
         
         /* Falling Rose Petals Animation */
         .petal {
             position: fixed;
-            background: #ffb7b2;
-            opacity: 0.5;
+            background: #ff758c;
+            opacity: 0.6;
             border-radius: 150% 0 150% 0;
             animation: fall linear infinite;
             z-index: 1;
@@ -30,7 +32,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative pb-24">
+<body class="min-h-screen flex flex-col justify-between relative pb-20">
 
     <!-- Falling Rose Petals Container -->
     <div id="petals-container"></div>
@@ -40,107 +42,135 @@
 
     <div>
         <!-- Top Brand & Login Bar -->
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-pink-100/60 shadow-xs">
-            <h1 id="navStoreName" class="text-xl md:text-2xl font-bold tracking-wider text-pink-500" style="background: linear-gradient(45deg, #ff9aa2, #b5ead7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                pxnni.shop
-            </h1>
-            <button onclick="openLoginModal()" class="bg-[#ffb7b2] hover:bg-[#ff9aa2] text-white px-5 py-2 rounded-full text-xs md:text-sm font-medium shadow-sm transition">
-                <span id="loginBtnText">เข้าสู่ระบบ</span>
+        <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center bg-white/60 backdrop-blur-md sticky top-0 z-50 border-b border-pink-100">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-pink-200 flex items-center justify-center text-pink-600 shadow-xs">
+                    
+                </div>
+                <h1 id="navStoreName" class="text-xl font-bold tracking-wider text-pink-500" style="background: linear-gradient(45deg, #ff758c, #ff7eb3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    pxnni.shop
+                </h1>
+            </div>
+            <button onclick="openLoginModal()" class="bg-pink-300 hover:bg-pink-400 text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-sm transition flex items-center gap-1.5">
+                 <span id="loginBtnText">เข้าสู่ระบบ</span>
             </button>
         </div>
 
-        <!-- Clean Navigation Tabs (No Icons, Pastel Theme) -->
-        <div class="max-w-4xl mx-auto px-4 py-3 bg-white/90 backdrop-blur-md shadow-xs flex justify-around md:justify-center md:gap-4 items-center text-center text-xs md:text-sm font-medium border-b border-pink-100/60 sticky top-[65px] z-40">
-            <button onclick="switchTab('shop')" id="tabBtn-shop" class="nav-btn px-4 py-2 rounded-2xl bg-[#ffb7b2] text-white shadow-xs transition">หน้าร้าน</button>
-            <button onclick="switchTab('orders')" id="tabBtn-orders" class="nav-btn px-4 py-2 rounded-2xl text-gray-500 hover:bg-pink-50 transition">คำสั่งซื้อ</button>
-            <button onclick="switchTab('topup')" id="tabBtn-topup" class="nav-btn px-4 py-2 rounded-2xl text-gray-500 hover:bg-pink-50 transition">เติมเงิน</button>
-            <button onclick="switchTab('rules')" id="tabBtn-rules" class="nav-btn px-4 py-2 rounded-2xl text-gray-500 hover:bg-pink-50 transition">กฎร้าน</button>
-            <button onclick="switchTab('admin')" id="tabBtn-admin" class="nav-btn px-4 py-2 rounded-2xl text-gray-500 hover:bg-pink-50 transition">แอดมิน</button>
+        <!-- Cute Navigation Icons Bar -->
+        <div class="max-w-md mx-auto px-4 py-3 bg-white/80 backdrop-blur-md shadow-xs flex justify-around items-center text-center text-xs font-medium text-gray-700 border-b border-pink-100 sticky top-[57px] z-40">
+            <button onclick="switchTab('shop')" class="flex flex-col items-center gap-1 text-pink-600 transition hover:scale-105">
+                <div class="w-10 h-10 rounded-2xl bg-pink-100 flex items-center justify-center text-pink-500 shadow-xs">🛍️</div>
+                <span>หน้าร้าน</span>
+            </button>
+            <button onclick="switchTab('orders')" class="flex flex-col items-center gap-1 text-gray-500 transition hover:scale-105">
+                <div class="w-10 h-10 rounded-2xl bg-pink-50 flex items-center justify-center text-pink-400 shadow-xs">📋</div>
+                <span>คำสั่งซื้อ</span>
+            </button>
+            <button onclick="switchTab('topup')" class="flex flex-col items-center gap-1 text-gray-500 transition hover:scale-105">
+                <div class="w-10 h-10 rounded-2xl bg-yellow-50 flex items-center justify-center text-yellow-600 shadow-xs">💳</div>
+                <span>เติมเงิน</span>
+            </button>
+            <button onclick="switchTab('rules')" class="flex flex-col items-center gap-1 text-gray-500 transition hover:scale-105">
+                <div class="w-10 h-10 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-500 shadow-xs">📖</div>
+                <span>กฎร้าน</span>
+            </button>
+            <button onclick="switchTab('admin')" class="flex flex-col items-center gap-1 text-gray-500 transition hover:scale-105">
+                <div class="w-10 h-10 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-500 shadow-xs">⚙️</div>
+                <span>แอดมิน</span>
+            </button>
         </div>
 
         <!-- Main Content Area -->
-        <main class="max-w-4xl mx-auto p-4 md:p-6 space-y-6 z-10 relative">
+        <main class="max-w-md mx-auto p-4 space-y-5 z-10 relative">
 
             <!-- TAB 1: SHOP -->
-            <section id="tab-shop" class="space-y-6">
-                <!-- Announcement Banner Box (Soft Pastel Yellow/Pink gradient) -->
-                <div class="bg-gradient-to-r from-[#fff1c1]/70 via-[#ffd1dc]/60 to-[#e2d1f9]/60 border border-pink-200/60 rounded-3xl p-5 shadow-sm flex items-center justify-between gap-4">
-                    <div class="space-y-1">
-                        <h2 id="headerTitleText" class="text-sm md:text-base font-bold text-pink-900 leading-snug">ยินดีต้อนรับสู่ pxnni.shop</h2>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed">สินค้าทั้งหมด เข้าสู่ระบบก่อนทำรายการ Open 08:00 - 23:00 ✨ สั่งสินค้าอัตโนมัติ ราคาตัวแทนฯ</p>
+            <section id="tab-shop" class="space-y-4">
+                <!-- Announcement Banner Box -->
+                <div class="bg-gradient-to-r from-pink-100/90 to-purple-100/90 border border-pink-200 rounded-3xl p-4 shadow-sm flex items-start justify-between gap-3 relative overflow-hidden">
+                    <div class="flex gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-pink-500 shadow-xs shrink-0 mt-0.5">
+                            📢
+                        </div>
+                        <div class="space-y-1">
+                            <h2 id="headerTitleText" class="text-sm font-bold text-pink-900 leading-snug">ยินดีต้อนรับสู่ pxnni.shop</h2>
+                            <p class="text-xs text-gray-600 leading-relaxed">สินค้าทั้งหมด เข้าสู่ระบบก่อนทำรายการ Open 08:00 - 23:00 ✨ สั่งสินค้าอัตโนมัติ ราคาตัวแทนฯ</p>
+                        </div>
                     </div>
-                    <button onclick="syncData()" class="bg-white/80 hover:bg-white text-pink-600 px-3.5 py-2 rounded-2xl shadow-xs transition text-xs font-medium shrink-0">
-                        รีเฟรช
+                    <button onclick="syncData()" class="bg-white hover:bg-pink-50 text-pink-600 p-2 rounded-2xl shadow-xs transition shrink-0">
+                        🔄
                     </button>
                 </div>
 
                 <!-- Product Header Info -->
                 <div class="flex justify-between items-center px-1">
-                    <h3 class="font-bold text-gray-800 text-lg">สินค้าแนะนำ</h3>
-                    <span id="productCountBadge" class="text-xs md:text-sm bg-[#ffd1dc]/40 text-pink-800 px-4 py-1.5 rounded-full font-medium">มีทั้งหมด 0 รายการ</span>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
+                        <h3 class="font-bold text-gray-800 text-base">สินค้าแนะนำ</h3>
+                    </div>
+                    <span id="productCountBadge" class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">มีทั้งหมด 0 รายการ</span>
                 </div>
 
                 <!-- Products Grid -->
-                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                <div id="productsGrid" class="space-y-4">
                     <!-- Dynamic Products inserted here -->
                 </div>
             </section>
 
             <!-- TAB 2: TOPUP -->
-            <section id="tab-topup" class="hidden space-y-6 max-w-xl mx-auto">
-                <div class="pastel-card p-6 space-y-5">
-                    <h2 class="text-xl font-bold text-pink-900">เติมเครดิตเข้าระบบ</h2>
+            <section id="tab-topup" class="hidden space-y-4">
+                <div class="pastel-card p-5 space-y-5 shadow-md">
+                    <h2 class="text-xl font-bold text-pink-900 flex items-center gap-2">💳 เติมเครดิตเข้าระบบ</h2>
                     
                     <!-- Bank / Wallet Info Box -->
-                    <div class="bg-pink-50/50 border border-pink-100 rounded-2xl p-4 space-y-3">
+                    <div class="bg-pink-50/70 border border-pink-200 rounded-2xl p-4 space-y-3">
                         <h3 class="font-bold text-pink-900 text-sm">ช่องทางการชำระเงิน</h3>
                         <div id="qrImageContainer" class="flex justify-center mb-2">
-                            <img id="displayQrImg" src="" alt="QR บัญชีร้าน" class="max-h-48 rounded-xl shadow-xs border border-pink-100 object-contain hidden">
+                            <img id="displayQrImg" src="" alt="QR บัญชีร้าน" class="max-h-40 rounded-xl shadow-xs border border-pink-200 object-contain hidden">
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                            <div class="bg-white/90 p-3 rounded-2xl border border-pink-100 flex justify-between items-center shadow-xs">
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-white p-2.5 rounded-xl border border-pink-100 flex justify-between items-center">
                                 <div>
-                                    <p class="text-[11px] text-gray-400">ธนาคาร / พร้อมเพย์</p>
+                                    <p class="text-[10px] text-gray-400">ธนาคาร / พร้อมเพย์</p>
                                     <p id="displayAccNumber" class="font-mono font-bold text-pink-700 text-sm">-</p>
                                 </div>
-                                <button onclick="copyText('displayAccNumber')" class="text-xs bg-[#ffd1dc]/60 hover:bg-[#ffd1dc] text-pink-900 px-3 py-1.5 rounded-xl transition">คัดลอก</button>
+                                <button onclick="copyText('displayAccNumber')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-1 rounded-lg">คัดลอก</button>
                             </div>
-                            <div class="bg-white/90 p-3 rounded-2xl border border-pink-100 flex justify-between items-center shadow-xs">
+                            <div class="bg-white p-2.5 rounded-xl border border-pink-100 flex justify-between items-center">
                                 <div>
-                                    <p class="text-[11px] text-gray-400">True Wallet</p>
+                                    <p class="text-[10px] text-gray-400">True Wallet</p>
                                     <p id="displayTrueWallet" class="font-mono font-bold text-pink-700 text-sm">-</p>
                                 </div>
-                                <button onclick="copyText('displayTrueWallet')" class="text-xs bg-[#ffd1dc]/60 hover:bg-[#ffd1dc] text-pink-900 px-3 py-1.5 rounded-xl transition">คัดลอก</button>
+                                <button onclick="copyText('displayTrueWallet')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-1 rounded-lg">คัดลอก</button>
                             </div>
                         </div>
-                        <div class="bg-white/90 p-3 rounded-2xl border border-pink-100 text-xs shadow-xs">
-                            <p class="text-[11px] text-gray-400">ชื่อบัญชี</p>
+                        <div class="bg-white p-2.5 rounded-xl border border-pink-100 text-xs">
+                            <p class="text-[10px] text-gray-400">ชื่อบัญชี</p>
                             <p id="displayAccName" class="font-semibold text-gray-800">-</p>
                         </div>
-                        <div class="bg-white/90 p-3 rounded-2xl border border-pink-100 text-xs flex justify-between items-center shadow-xs">
+                        <div class="bg-white p-2.5 rounded-xl border border-pink-100 text-xs flex justify-between items-center">
                             <div>
-                                <p class="text-[11px] text-gray-400">โน๊ตสลิป</p>
+                                <p class="text-[10px] text-gray-400">โน๊ตสลิป</p>
                                 <p id="displayNoteSlip" class="font-semibold text-purple-900">-</p>
                             </div>
-                            <button onclick="copyText('displayNoteSlip')" class="text-xs bg-[#e2d1f9]/60 hover:bg-[#e2d1f9] text-purple-900 px-3 py-1.5 rounded-xl transition">คัดลอก</button>
+                            <button onclick="copyText('displayNoteSlip')" class="text-[10px] bg-purple-100 hover:bg-purple-200 text-purple-800 px-2 py-1 rounded-lg">คัดลอก</button>
                         </div>
                     </div>
 
                     <!-- Topup Form -->
-                    <form onsubmit="handleTopup(event)" class="space-y-4">
+                    <form onsubmit="handleTopup(event)" class="space-y-3">
                         <div>
-                            <label class="block text-xs md:text-sm font-medium text-gray-600 mb-1">จำนวนเงินที่ต้องการเติม (บาท)</label>
-                            <input type="number" id="topupAmount" min="1" step="any" required class="w-full px-4 py-3 rounded-2xl border border-pink-200/80 focus:ring-2 focus:ring-pink-300 outline-none text-sm bg-white" placeholder="เช่น 100">
+                            <label class="block text-xs font-medium text-gray-600 mb-1">จำนวนเงินที่ต้องการเติม (บาท)</label>
+                            <input type="number" id="topupAmount" min="1" step="any" required class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:ring-2 focus:ring-pink-300 outline-none text-sm bg-white" placeholder="เช่น 100">
                         </div>
                         <div>
-                            <label class="block text-xs md:text-sm font-medium text-gray-600 mb-1">อัปโหลดรูปสลิปจากมือถือ</label>
-                            <input type="file" id="topupSlipFile" accept="image/*" onchange="previewSlipFile(event)" class="w-full text-xs text-gray-500 file:mr-3 file:py-2.5 file:px-4 file:rounded-2xl file:border-0 file:text-xs file:font-semibold file:bg-[#ffd1dc]/70 file:text-pink-900 hover:file:bg-[#ffd1dc] cursor-pointer">
+                            <label class="block text-xs font-medium text-gray-600 mb-1">อัปโหลดรูปสลิปจากมือถือ</label>
+                            <input type="file" id="topupSlipFile" accept="image/*" onchange="previewSlipFile(event)" class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-pink-100 file:text-pink-800 hover:file:bg-pink-200 cursor-pointer">
                             <input type="hidden" id="topupSlipUrl">
-                            <div id="slipPreviewContainer" class="mt-3 hidden text-center">
-                                <img id="slipPreviewImg" class="max-h-40 mx-auto rounded-2xl border border-pink-200 shadow-xs">
+                            <div id="slipPreviewContainer" class="mt-2 hidden text-center">
+                                <img id="slipPreviewImg" class="max-h-32 mx-auto rounded-xl border border-pink-200 shadow-xs">
                             </div>
                         </div>
-                        <button type="submit" class="w-full bg-[#ffb7b2] hover:bg-[#ff9aa2] text-white font-bold py-3.5 rounded-2xl shadow-sm transition text-sm">
+                        <button type="submit" class="w-full bg-pink-400 hover:bg-pink-500 text-white font-bold py-3 rounded-xl shadow-md transition text-sm">
                             บันทึกข้อมูลและเติมเครดิตทันที
                         </button>
                     </form>
@@ -148,21 +178,21 @@
             </section>
 
             <!-- TAB 3: ORDERS -->
-            <section id="tab-orders" class="hidden space-y-4 max-w-2xl mx-auto">
-                <div class="pastel-card p-6 space-y-4">
+            <section id="tab-orders" class="hidden space-y-4">
+                <div class="pastel-card p-5 space-y-4 shadow-md">
                     <h2 class="text-xl font-bold text-pink-900">ประวัติคำสั่งซื้อ</h2>
                     <p class="text-xs text-gray-500">รหัสสินค้าที่คุณสั่งซื้อจะแสดงที่นี่ สามารถกดคัดลอกไปใช้งานได้ทันที</p>
                     
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse text-xs md:text-sm">
+                        <table class="w-full text-left border-collapse text-xs">
                             <thead>
-                                <tr class="bg-[#ffd1dc]/50 text-pink-900">
-                                    <th class="p-3 rounded-l-2xl">วันที่/สินค้า</th>
-                                    <th class="p-3">รหัสสินค้า</th>
-                                    <th class="p-3 rounded-r-2xl text-center">จัดการ</th>
+                                <tr class="bg-pink-100 text-pink-900">
+                                    <th class="p-2.5 rounded-l-xl">วันที่/สินค้า</th>
+                                    <th class="p-2.5">รหัสสินค้า</th>
+                                    <th class="p-2.5 rounded-r-xl text-center">จัดการ</th>
                                 </tr>
                             </thead>
-                            <tbody id="ordersTableBody" class="divide-y divide-pink-100/60">
+                            <tbody id="ordersTableBody" class="divide-y divide-pink-100">
                                 <!-- Order rows -->
                             </tbody>
                         </table>
@@ -171,68 +201,68 @@
             </section>
 
             <!-- TAB 4: RULES -->
-            <section id="tab-rules" class="hidden space-y-4 max-w-2xl mx-auto">
-                <div class="pastel-card p-6 space-y-4">
+            <section id="tab-rules" class="hidden space-y-4">
+                <div class="pastel-card p-5 space-y-4 shadow-md">
                     <h2 class="text-xl font-bold text-pink-900">กฎระเบียบของร้าน</h2>
                     
-                    <div id="rulesBannerContainer" class="hidden text-center bg-gray-50 rounded-2xl overflow-hidden border border-pink-100 p-2">
+                    <div id="rulesBannerContainer" class="hidden text-center bg-gray-50 rounded-2xl overflow-hidden border border-pink-200 p-2">
                         <img id="rulesBannerImg" src="" alt="ป้ายกฎร้านค้า" class="w-full h-auto max-h-[600px] object-contain mx-auto rounded-xl">
                     </div>
 
-                    <div class="flex gap-2 border-b border-pink-100 pb-2 overflow-x-auto">
-                        <button onclick="switchRuleTab('rule1')" id="rBtn1" class="rule-tab-btn px-4 py-2 rounded-2xl font-semibold text-xs bg-[#ffb7b2] text-white shadow-xs transition shrink-0">กฎการสั่งซื้อ</button>
-                        <button onclick="switchRuleTab('rule2')" id="rBtn2" class="rule-tab-btn px-4 py-2 rounded-2xl font-semibold text-xs bg-white text-gray-600 hover:bg-pink-50 transition shrink-0">การรับประกัน</button>
-                        <button onclick="switchRuleTab('rule3')" id="rBtn3" class="rule-tab-btn px-4 py-2 rounded-2xl font-semibold text-xs bg-white text-gray-600 hover:bg-pink-50 transition shrink-0">ข้อตกลงเติมเงิน</button>
+                    <div class="flex gap-1.5 border-b border-pink-200 pb-2 overflow-x-auto">
+                        <button onclick="switchRuleTab('rule1')" id="rBtn1" class="rule-tab-btn px-3 py-1.5 rounded-xl font-semibold text-xs bg-pink-400 text-white shadow-xs transition shrink-0">กฎการสั่งซื้อ</button>
+                        <button onclick="switchRuleTab('rule2')" id="rBtn2" class="rule-tab-btn px-3 py-1.5 rounded-xl font-semibold text-xs bg-white text-pink-800 hover:bg-pink-50 transition shrink-0">การรับประกัน</button>
+                        <button onclick="switchRuleTab('rule3')" id="rBtn3" class="rule-tab-btn px-3 py-1.5 rounded-xl font-semibold text-xs bg-white text-pink-800 hover:bg-pink-50 transition shrink-0">ข้อตกลงเติมเงิน</button>
                     </div>
 
-                    <div class="bg-pink-50/40 p-5 rounded-2xl border border-pink-100/60 text-xs md:text-sm text-gray-700 leading-relaxed min-h-[140px]" id="ruleContentDisplay">
+                    <div class="bg-pink-50/50 p-4 rounded-2xl border border-pink-100 text-xs text-gray-700 leading-relaxed min-h-[120px]" id="ruleContentDisplay">
                         <!-- Loaded dynamically -->
                     </div>
                 </div>
             </section>
 
             <!-- TAB 5: ADMIN -->
-            <section id="tab-admin" class="hidden space-y-4 max-w-2xl mx-auto">
-                <div id="adminLoginBox" class="pastel-card p-8 text-center space-y-4">
-                    <h2 class="text-xl font-bold text-purple-900">เข้าสู่ระบบแอดมิน</h2>
-                    <input type="password" id="adminPasswordInput" placeholder="รหัสผ่านแอดมิน" class="w-full px-4 py-3 rounded-2xl border border-purple-200 text-center text-sm outline-none bg-white">
-                    <button onclick="verifyAdmin()" class="w-full bg-[#e2d1f9] hover:bg-[#d8b4f8] text-purple-900 font-bold py-3 rounded-2xl shadow-sm text-sm transition">เข้าสู่ระบบ</button>
+            <section id="tab-admin" class="hidden space-y-4">
+                <div id="adminLoginBox" class="pastel-card p-6 text-center space-y-3 shadow-md">
+                    <h2 class="text-lg font-bold text-purple-900">เข้าสู่ระบบแอดมิน</h2>
+                    <input type="password" id="adminPasswordInput" placeholder="รหัสผ่านแอดมิน" class="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-center text-sm outline-none">
+                    <button onclick="verifyAdmin()" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2.5 rounded-xl shadow-md text-xs transition">เข้าสู่ระบบ</button>
                 </div>
 
                 <div id="adminDashboard" class="hidden space-y-4">
-                    <div class="flex justify-between items-center bg-white/90 p-4 rounded-3xl shadow-xs border border-purple-100">
-                        <h2 class="text-sm md:text-base font-bold text-purple-900">แผงควบคุมแอดมิน</h2>
-                        <div class="flex gap-2">
-                            <button onclick="saveDataToSheet()" class="bg-[#e2d1f9] text-purple-900 px-4 py-2 rounded-2xl text-xs font-bold shadow-xs">ซิงค์ชีต</button>
-                            <button onclick="logoutAdmin()" class="bg-gray-100 text-gray-600 px-3.5 py-2 rounded-2xl text-xs">ออก</button>
+                    <div class="flex justify-between items-center bg-white p-3 rounded-2xl shadow-xs border border-purple-100">
+                        <h2 class="text-sm font-bold text-purple-900">แผงควบคุมแอดมิน</h2>
+                        <div class="flex gap-1.5">
+                            <button onclick="saveDataToSheet()" class="bg-purple-600 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-xs">ซิงค์ชีต</button>
+                            <button onclick="logoutAdmin()" class="bg-gray-200 text-gray-700 px-2.5 py-1.5 rounded-xl text-xs">ออก</button>
                         </div>
                     </div>
 
-                    <div class="flex gap-2 bg-white/90 p-2 rounded-3xl border border-purple-100 overflow-x-auto text-xs">
-                        <button onclick="switchAdminSubTab('inventory')" id="aSubBtn1" class="admin-sub-btn px-4 py-2 rounded-2xl font-semibold bg-[#e2d1f9] text-purple-900 transition shrink-0">สต๊อก</button>
-                        <button onclick="switchAdminSubTab('settings')" id="aSubBtn2" class="admin-sub-btn px-4 py-2 rounded-2xl font-semibold bg-white text-gray-600 transition shrink-0">ตั้งค่า</button>
-                        <button onclick="switchAdminSubTab('topups')" id="aSubBtn3" class="admin-sub-btn px-4 py-2 rounded-2xl font-semibold bg-white text-gray-600 transition shrink-0">สลิป</button>
-                        <button onclick="switchAdminSubTab('sales')" id="aSubBtn4" class="admin-sub-btn px-4 py-2 rounded-2xl font-semibold bg-white text-gray-600 transition shrink-0">ยอดขาย</button>
+                    <div class="flex gap-1 bg-white/80 p-1.5 rounded-2xl border border-purple-100 overflow-x-auto text-xs">
+                        <button onclick="switchAdminSubTab('inventory')" id="aSubBtn1" class="admin-sub-btn px-3 py-1.5 rounded-xl font-semibold bg-purple-500 text-white transition shrink-0">สต๊อก</button>
+                        <button onclick="switchAdminSubTab('settings')" id="aSubBtn2" class="admin-sub-btn px-3 py-1.5 rounded-xl font-semibold bg-white text-purple-800 transition shrink-0">ตั้งค่า</button>
+                        <button onclick="switchAdminSubTab('topups')" id="aSubBtn3" class="admin-sub-btn px-3 py-1.5 rounded-xl font-semibold bg-white text-purple-800 transition shrink-0">สลิป</button>
+                        <button onclick="switchAdminSubTab('sales')" id="aSubBtn4" class="admin-sub-btn px-3 py-1.5 rounded-xl font-semibold bg-white text-purple-800 transition shrink-0">ยอดขาย</button>
                     </div>
 
                     <!-- SubTab 1: Inventory -->
                     <div id="admin-sub-inventory" class="space-y-4">
-                        <div class="pastel-card p-6 space-y-3">
+                        <div class="pastel-card p-4 space-y-3">
                             <h3 id="productFormTitle" class="text-sm font-bold text-purple-900">เพิ่มสินค้าใหม่</h3>
-                            <form onsubmit="handleProductSubmit(event)" class="space-y-3 text-xs md:text-sm">
+                            <form onsubmit="handleProductSubmit(event)" class="space-y-2 text-xs">
                                 <input type="hidden" id="editProductId">
-                                <input type="text" id="prodName" placeholder="ชื่อสินค้า" required class="w-full px-4 py-3 rounded-2xl border border-purple-100 outline-none bg-white">
-                                <input type="number" id="prodPrice" placeholder="ราคา (บาท)" min="0" step="any" required class="w-full px-4 py-3 rounded-2xl border border-purple-100 outline-none bg-white">
-                                <textarea id="prodDesc" placeholder="รายละเอียดสินค้า" rows="2" class="w-full px-4 py-3 rounded-2xl border border-purple-100 outline-none bg-white"></textarea>
-                                <input type="url" id="prodImg" placeholder="URL ภาพสินค้า" class="w-full px-4 py-3 rounded-2xl border border-purple-100 outline-none bg-white">
-                                <textarea id="prodCodes" placeholder="รหัสสินค้า (คั่นด้วย / หรือขึ้นบรรทัดใหม่)" rows="3" class="w-full px-4 py-3 rounded-2xl border border-purple-100 font-mono outline-none bg-white"></textarea>
+                                <input type="text" id="prodName" placeholder="ชื่อสินค้า" required class="w-full px-3 py-2 rounded-xl border border-purple-200 outline-none">
+                                <input type="number" id="prodPrice" placeholder="ราคา (บาท)" min="0" step="any" required class="w-full px-3 py-2 rounded-xl border border-purple-200 outline-none">
+                                <textarea id="prodDesc" placeholder="รายละเอียดสินค้า" rows="2" class="w-full px-3 py-2 rounded-xl border border-purple-200 outline-none"></textarea>
+                                <input type="url" id="prodImg" placeholder="URL ภาพสินค้า" class="w-full px-3 py-2 rounded-xl border border-purple-200 outline-none">
+                                <textarea id="prodCodes" placeholder="รหัสสินค้า (คั่นด้วย / หรือขึ้นบรรทัดใหม่)" rows="3" class="w-full px-3 py-2 rounded-xl border border-purple-200 font-mono outline-none"></textarea>
                                 <div class="flex gap-2">
-                                    <button type="submit" class="flex-1 bg-[#e2d1f9] text-purple-900 font-bold py-3 rounded-2xl shadow-xs">บันทึก</button>
-                                    <button type="button" onclick="resetProductForm()" id="cancelEditBtn" class="hidden bg-gray-100 text-gray-600 px-4 py-3 rounded-2xl">ยกเลิก</button>
+                                    <button type="submit" class="flex-1 bg-purple-500 text-white font-bold py-2 rounded-xl shadow-xs">บันทึก</button>
+                                    <button type="button" onclick="resetProductForm()" id="cancelEditBtn" class="hidden bg-gray-200 text-gray-700 px-3 py-2 rounded-xl">ยกเลิก</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="pastel-card p-6 space-y-3">
+                        <div class="pastel-card p-4 space-y-3">
                             <h3 class="text-sm font-bold text-purple-900">รายการสินค้าในสต๊อก</h3>
                             <div id="adminProductsList" class="space-y-2 text-xs"></div>
                         </div>
@@ -240,32 +270,32 @@
 
                     <!-- SubTab 2: Settings -->
                     <div id="admin-sub-settings" class="hidden space-y-4">
-                        <div class="pastel-card p-6 space-y-3 text-xs md:text-sm">
+                        <div class="pastel-card p-4 space-y-3 text-xs">
                             <h3 class="text-sm font-bold text-purple-900">ตั้งค่าร้านค้า & บัญชี</h3>
-                            <form onsubmit="saveStoreSettings(event)" class="space-y-3">
-                                <input type="text" id="setStoreName" placeholder="ชื่อร้าน" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="text" id="setHeaderTitle" placeholder="คำพาดหัว" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="text" id="setAdminPass" placeholder="รหัสผ่านแอดมิน" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="url" id="setBgMusicUrl" placeholder="URL เพลง MP3" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="text" id="setAccName" placeholder="ชื่อบัญชี" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="text" id="setAccNumber" placeholder="เลขบัญชี / พร้อมเพย์" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="text" id="setTrueWallet" placeholder="True Wallet" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="text" id="setNoteSlip" placeholder="โน๊ตสลิป" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="url" id="setQrImage" placeholder="URL รูปป้ายบัญชี" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="url" id="setRulesBanner" placeholder="URL รูปป้ายกฎร้าน" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <input type="text" id="setLineContact" placeholder="LINE Contact" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white">
-                                <textarea id="setRule1" placeholder="กฎการสั่งซื้อ" rows="2" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white"></textarea>
-                                <textarea id="setRule2" placeholder="การรับประกัน" rows="2" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white"></textarea>
-                                <textarea id="setRule3" placeholder="ข้อตกลงเติมเงิน" rows="2" class="w-full px-4 py-3 rounded-2xl border border-purple-100 bg-white"></textarea>
-                                <input type="url" id="setGsUrl" placeholder="Google Apps Script Web App URL" class="w-full px-4 py-3 rounded-2xl border border-purple-100 font-mono text-xs bg-white">
-                                <button type="submit" class="w-full bg-[#e2d1f9] text-purple-900 font-bold py-3.5 rounded-2xl shadow-xs">บันทึกการตั้งค่า</button>
+                            <form onsubmit="saveStoreSettings(event)" class="space-y-2.5">
+                                <input type="text" id="setStoreName" placeholder="ชื่อร้าน" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="text" id="setHeaderTitle" placeholder="คำพาดหัว" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="text" id="setAdminPass" placeholder="รหัสผ่านแอดมิน" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="url" id="setBgMusicUrl" placeholder="URL เพลง MP3" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="text" id="setAccName" placeholder="ชื่อบัญชี" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="text" id="setAccNumber" placeholder="เลขบัญชี / พร้อมเพย์" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="text" id="setTrueWallet" placeholder="True Wallet" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="text" id="setNoteSlip" placeholder="โน๊ตสลิป" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="url" id="setQrImage" placeholder="URL รูปป้ายบัญชี" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="url" id="setRulesBanner" placeholder="URL รูปป้ายกฎร้าน" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <input type="text" id="setLineContact" placeholder="LINE Contact" class="w-full px-3 py-2 rounded-xl border border-purple-200">
+                                <textarea id="setRule1" placeholder="กฎการสั่งซื้อ" rows="2" class="w-full px-3 py-2 rounded-xl border border-purple-200"></textarea>
+                                <textarea id="setRule2" placeholder="การรับประกัน" rows="2" class="w-full px-3 py-2 rounded-xl border border-purple-200"></textarea>
+                                <textarea id="setRule3" placeholder="ข้อตกลงเติมเงิน" rows="2" class="w-full px-3 py-2 rounded-xl border border-purple-200"></textarea>
+                                <input type="url" id="setGsUrl" placeholder="Google Apps Script Web App URL" class="w-full px-3 py-2 rounded-xl border border-purple-200 font-mono">
+                                <button type="submit" class="w-full bg-purple-500 text-white font-bold py-2.5 rounded-xl shadow-xs">บันทึกการตั้งค่า</button>
                             </form>
                         </div>
                     </div>
 
                     <!-- SubTab 3: Topups -->
                     <div id="admin-sub-topups" class="hidden space-y-3">
-                        <div class="pastel-card p-6 space-y-2">
+                        <div class="pastel-card p-4 space-y-2">
                             <h3 class="text-sm font-bold text-purple-900">ประวัติการเติมเงิน</h3>
                             <div id="adminTopupsList" class="space-y-2 text-xs"></div>
                         </div>
@@ -273,7 +303,7 @@
 
                     <!-- SubTab 4: Sales -->
                     <div id="admin-sub-sales" class="hidden space-y-3">
-                        <div class="pastel-card p-6 space-y-2">
+                        <div class="pastel-card p-4 space-y-2">
                             <h3 class="text-sm font-bold text-purple-900">ประวัติการขาย</h3>
                             <div id="adminSalesList" class="space-y-2 text-xs"></div>
                         </div>
@@ -286,31 +316,31 @@
 
     <!-- Floating Music Player Bar (Bottom) -->
     <div class="fixed bottom-3 left-0 right-0 px-4 z-50 pointer-events-none">
-        <div class="max-w-xl mx-auto bg-white/95 backdrop-blur-md border border-pink-200/60 rounded-full px-5 py-2.5 shadow-lg flex items-center justify-between pointer-events-auto">
+        <div class="max-w-md mx-auto bg-white/90 backdrop-blur-md border border-pink-200 rounded-full px-4 py-2 shadow-lg flex items-center justify-between pointer-events-auto">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-[#ffb7b2] flex items-center justify-center text-white text-xs shadow-xs">
-                    ♫
+                <div class="w-8 h-8 rounded-full bg-pink-400 flex items-center justify-center text-white text-xs shadow-xs animate-spin" style="animation-duration: 6s;">
+                    🎵
                 </div>
                 <div>
                     <p class="text-xs font-bold text-pink-900 leading-tight">Ordinary Love - Park Kyung</p>
                     <p class="text-[10px] text-gray-400 leading-tight">กำลังเล่นเพลง...</p>
                 </div>
             </div>
-            <button onclick="toggleMusic()" id="musicToggleBtn" class="bg-[#ffd1dc]/60 hover:bg-[#ffd1dc] text-pink-900 px-3.5 py-1 rounded-full text-xs font-semibold transition">
+            <button onclick="toggleMusic()" id="musicToggleBtn" class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-3 py-1 rounded-full text-xs font-semibold transition">
                 เปิด/ปิด
             </button>
         </div>
     </div>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black/30 backdrop-blur-xs flex items-center justify-center z-50 hidden">
-        <div class="pastel-card p-6 max-w-xs w-full mx-4 space-y-3 shadow-2xl">
+    <div id="loginModal" class="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 hidden">
+        <div class="pastel-card p-5 max-w-xs w-full mx-4 space-y-3 shadow-2xl">
             <h3 class="text-base font-bold text-pink-900 text-center">เข้าสู่ระบบร้านค้า</h3>
             <p class="text-[11px] text-gray-500 text-center">กรุณากรอกชื่อผู้ใช้งานเพื่อสั่งซื้อและใช้งานเครดิต</p>
-            <input type="text" id="modalUsernameInput" placeholder="ชื่อผู้ใช้งาน (Username)" class="w-full px-4 py-3 rounded-2xl border border-pink-200 text-xs outline-none bg-white">
+            <input type="text" id="modalUsernameInput" placeholder="ชื่อผู้ใช้งาน (Username)" class="w-full px-3 py-2 rounded-xl border border-pink-200 text-xs outline-none">
             <div class="flex gap-2">
-                <button onclick="handleLoginSubmit()" class="flex-1 bg-[#ffb7b2] hover:bg-[#ff9aa2] text-white font-bold py-2.5 rounded-2xl text-xs shadow-xs">ยืนยัน</button>
-                <button onclick="closeLoginModal()" class="bg-gray-100 text-gray-600 px-4 py-2.5 rounded-2xl text-xs">ยกเลิก</button>
+                <button onclick="handleLoginSubmit()" class="flex-1 bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 rounded-xl text-xs shadow-xs">ยืนยัน</button>
+                <button onclick="closeLoginModal()" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-xl text-xs">ยกเลิก</button>
             </div>
         </div>
     </div>
@@ -337,7 +367,7 @@
         // Falling Petals Generator
         function createPetals() {
             const container = document.getElementById('petals-container');
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 12; i++) {
                 const petal = document.createElement('div');
                 petal.className = 'petal';
                 const size = Math.random() * 8 + 6;
@@ -437,16 +467,8 @@
             playCuteSound();
             ['shop', 'topup', 'orders', 'rules', 'admin'].forEach(t => {
                 document.getElementById(`tab-${t}`).classList.add('hidden');
-                const btn = document.getElementById(`tabBtn-${t}`);
-                if (btn) {
-                    btn.className = 'nav-btn px-4 py-2 rounded-2xl text-gray-500 hover:bg-pink-50 transition';
-                }
             });
             document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-            const activeBtn = document.getElementById(`tabBtn-${tabName}`);
-            if (activeBtn) {
-                activeBtn.className = 'nav-btn px-4 py-2 rounded-2xl bg-[#ffb7b2] text-white shadow-xs transition';
-            }
         }
 
         function openLoginModal() {
@@ -505,26 +527,26 @@
             document.getElementById('productCountBadge').innerText = `มีทั้งหมด ${appData.products.length} รายการ`;
             
             if (appData.products.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-8 text-gray-400 text-xs">ยังไม่มีสินค้าในสต๊อกขณะนี้</div>`;
+                grid.innerHTML = `<div class="text-center py-8 text-gray-400 text-xs">ยังไม่มีสินค้าในสต๊อกขณะนี้</div>`;
                 return;
             }
             appData.products.forEach(p => {
                 const stockCount = p.codes ? p.codes.length : 0;
                 const isOutOfStock = stockCount === 0;
                 grid.innerHTML += `
-                    <div class="pastel-card overflow-hidden shadow-xs flex flex-col justify-between transition hover:shadow-md">
+                    <div class="pastel-card overflow-hidden shadow-sm flex flex-col justify-between transition hover:shadow-md">
                         <div class="relative">
                             <img src="${p.img || 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500'}" alt="${p.name}" class="w-full h-44 object-cover">
-                            ${isOutOfStock ? '<span class="absolute top-2.5 right-2.5 bg-gray-900/70 text-white text-[10px] px-3 py-1 rounded-full font-semibold backdrop-blur-xs">สินค้าหมด</span>' : ''}
+                            ${isOutOfStock ? '<span class="absolute top-2.5 right-2.5 bg-gray-900/70 text-white text-[10px] px-2.5 py-1 rounded-full font-semibold backdrop-blur-xs">สินค้าหมด</span>' : ''}
                         </div>
-                        <div class="p-4 space-y-3">
-                            <h4 class="font-bold text-sm md:text-base text-gray-800">${p.name}</h4>
-                            <div class="flex justify-between items-center">
+                        <div class="p-3.5 space-y-2">
+                            <h4 class="font-bold text-sm text-gray-800">${p.name}</h4>
+                            <div class="flex justify-between items-center pt-1">
                                 <div>
                                     <p class="text-[10px] text-gray-400 leading-none">ราคา</p>
-                                    <span class="text-pink-600 font-bold text-base md:text-lg">${p.price} ฿</span>
+                                    <span class="text-pink-600 font-bold text-base">${p.price} ฿</span>
                                 </div>
-                                <button onclick="buyProduct('${p.id}')" ${isOutOfStock ? 'disabled' : ''} class="px-4 py-2 rounded-2xl font-bold text-xs shadow-xs transition ${isOutOfStock ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-[#ffb7b2] hover:bg-[#ff9aa2] text-white'}">
+                                <button onclick="buyProduct('${p.id}')" ${isOutOfStock ? 'disabled' : ''} class="px-4 py-2 rounded-xl font-bold text-xs shadow-xs transition ${isOutOfStock ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-pink-400 hover:bg-pink-500 text-white'}">
                                     ${isOutOfStock ? 'สินค้าหมด' : 'ซื้อสินค้า'}
                                 </button>
                             </div>
@@ -594,14 +616,14 @@
             }
             userOrders.forEach(o => {
                 tbody.innerHTML += `
-                    <tr class="hover:bg-pink-50/40">
-                        <td class="p-3">
+                    <tr class="hover:bg-pink-50/50">
+                        <td class="p-2.5">
                             <p class="font-semibold text-gray-800">${o.productName}</p>
                             <p class="text-[10px] text-gray-400">${o.date}</p>
                         </td>
-                        <td class="p-3 font-mono font-bold text-purple-700 select-all">${o.code}</td>
-                        <td class="p-3 text-center">
-                            <button onclick="copyStringToClipboard('${o.code}')" class="bg-[#ffd1dc]/60 hover:bg-[#ffd1dc] text-pink-900 px-3 py-1.5 rounded-xl text-xs transition">คัดลอก</button>
+                        <td class="p-2.5 font-mono font-bold text-purple-700 select-all">${o.code}</td>
+                        <td class="p-2.5 text-center">
+                            <button onclick="copyStringToClipboard('${o.code}')" class="bg-pink-100 hover:bg-pink-200 text-pink-800 px-2.5 py-1 rounded-lg text-[10px]">คัดลอก</button>
                         </td>
                     </tr>
                 `;
@@ -680,9 +702,9 @@
             ['rule1', 'rule2', 'rule3'].forEach((k, idx) => {
                 const btn = document.getElementById(`rBtn${idx+1}`);
                 if (k === ruleKey) {
-                    btn.className = 'rule-tab-btn px-4 py-2 rounded-2xl font-semibold text-xs bg-[#ffb7b2] text-white shadow-xs transition shrink-0';
+                    btn.className = 'rule-tab-btn px-3 py-1.5 rounded-xl font-semibold text-xs bg-pink-400 text-white shadow-xs transition shrink-0';
                 } else {
-                    btn.className = 'rule-tab-btn px-4 py-2 rounded-2xl font-semibold text-xs bg-white text-gray-600 hover:bg-pink-50 transition shrink-0';
+                    btn.className = 'rule-tab-btn px-3 py-1.5 rounded-xl font-semibold text-xs bg-white text-pink-800 hover:bg-pink-50 transition shrink-0';
                 }
             });
             document.getElementById('ruleContentDisplay').innerHTML = `<p class="whitespace-pre-line">${appData[ruleKey] || ''}</p>`;
@@ -711,10 +733,10 @@
                 const btn = document.getElementById(`aSubBtn${idx+1}`);
                 const div = document.getElementById(`admin-sub-${s}`);
                 if (s === subName) {
-                    btn.className = 'admin-sub-btn px-4 py-2 rounded-2xl font-semibold bg-[#e2d1f9] text-purple-900 transition shrink-0';
+                    btn.className = 'admin-sub-btn px-3 py-1.5 rounded-xl font-semibold bg-purple-500 text-white transition shrink-0';
                     div.classList.remove('hidden');
                 } else {
-                    btn.className = 'admin-sub-btn px-4 py-2 rounded-2xl font-semibold bg-white text-gray-600 transition shrink-0';
+                    btn.className = 'admin-sub-btn px-3 py-1.5 rounded-xl font-semibold bg-white text-purple-800 transition shrink-0';
                     div.classList.add('hidden');
                 }
             });
@@ -754,14 +776,14 @@
             list.innerHTML = '';
             appData.products.forEach(p => {
                 list.innerHTML += `
-                    <div class="flex justify-between items-center bg-white p-3 rounded-2xl border border-purple-100 shadow-xs">
+                    <div class="flex justify-between items-center bg-white p-2.5 rounded-xl border border-purple-100">
                         <div>
                             <p class="font-bold text-gray-800">${p.name} (${p.price} ฿)</p>
                             <p class="text-[10px] text-gray-400">คงเหลือ: ${p.codes.length} ชิ้น</p>
                         </div>
-                        <div class="flex gap-1.5">
-                            <button onclick="editProduct('${p.id}')" class="bg-purple-100 text-purple-800 px-3 py-1.5 rounded-xl text-xs transition">แก้ไข</button>
-                            <button onclick="deleteProduct('${p.id}')" class="bg-red-100 text-red-800 px-3 py-1.5 rounded-xl text-xs transition">ลบ</button>
+                        <div class="flex gap-1">
+                            <button onclick="editProduct('${p.id}')" class="bg-blue-100 text-blue-800 px-2 py-1 rounded-lg">แก้ไข</button>
+                            <button onclick="deleteProduct('${p.id}')" class="bg-red-100 text-red-800 px-2 py-1 rounded-lg">ลบ</button>
                         </div>
                     </div>
                 `;
@@ -803,7 +825,7 @@
             const list = document.getElementById('adminTopupsList');
             list.innerHTML = '';
             appData.topups.forEach(t => {
-                list.innerHTML += `<div class="bg-white p-3 rounded-2xl border border-purple-100 flex justify-between text-xs shadow-xs"><span>${t.username} (+${t.amount}฿)</span><a href="${t.slipUrl}" target="_blank" class="text-purple-700 underline">ดูสลิป</a></div>`;
+                list.innerHTML += `<div class="bg-white p-2 rounded-xl border border-purple-100 flex justify-between"><span>${t.username} (+${t.amount}฿)</span><a href="${t.slipUrl}" target="_blank" class="text-blue-600 underline">ดูสลิป</a></div>`;
             });
         }
 
@@ -811,7 +833,7 @@
             const list = document.getElementById('adminSalesList');
             list.innerHTML = '';
             appData.sales.forEach(s => {
-                list.innerHTML += `<div class="bg-white p-3 rounded-2xl border border-purple-100 text-xs shadow-xs"><p class="font-bold">${s.productName} (${s.price}฿) - ${s.username}</p><p class="font-mono text-purple-700">${s.code}</p></div>`;
+                list.innerHTML += `<div class="bg-white p-2 rounded-xl border border-purple-100"><p class="font-bold">${s.productName} (${s.price}฿) - ${s.username}</p><p class="font-mono text-purple-700">${s.code}</p></div>`;
             });
         }
 
